@@ -42,10 +42,7 @@ namespace Autoglass.Aplicacao.Services
             if (produtoRetorno == null)
                 return new RespostaGenerica<Produto>();
 
-            produtoRetorno.Descricao = produto.Descricao;
-            produtoRetorno.DataFabricacao = produto.DataFabricacao;
-            produtoRetorno.DataValidade = produto.DataValidade;
-
+            produtoRetorno.AlterarProduto(produto);
             _repository.SalvarAlteracoes();
 
             return new RespostaGenerica<Produto>(produtoRetorno);
@@ -56,7 +53,7 @@ namespace Autoglass.Aplicacao.Services
             var produtoRetorno = await _repository.RetornarProdutoPorId(id);
             if (produtoRetorno == null)
                 return new RespostaGenerica<Produto>(produtoRetorno);
-            produtoRetorno.Ativo = false;
+            produtoRetorno.ExcluirLogicamente();
             _repository.SalvarAlteracoes();
             return new RespostaGenerica<Produto>(produtoRetorno);
         }

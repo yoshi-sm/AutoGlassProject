@@ -8,8 +8,8 @@ namespace Autoglass.Dominio.Entidades
 {
     public class Fornecedor
     {
-        public int Id {  get; set; }
-        public string? Descricao { get; set; }
-        public string? CNPJ { get; set;}
+        public int Id {  get; private set; }
+        public string? Descricao { get; private set; }
+        public string? CNPJ { get; private set;}
     }
 }
