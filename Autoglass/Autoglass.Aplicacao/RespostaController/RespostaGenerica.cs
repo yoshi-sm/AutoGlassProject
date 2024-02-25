@@ -16,10 +16,8 @@ namespace Autoglass.Aplicacao.RespostaController
             Mensagem = mensagem;
         }
 
-        public RespostaGenerica(string? mensagem, T? objeto)
+        public RespostaGenerica()
         {
-            Mensagem = mensagem;
-            Objeto = objeto;
         }
 
         public RespostaGenerica(T? objeto)

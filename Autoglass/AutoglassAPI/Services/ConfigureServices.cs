@@ -1,5 +1,6 @@
 ﻿using Autoglass.Aplicacao.Interfaces;
 using Autoglass.Aplicacao.Mapping;
+using Autoglass.Aplicacao.Services;
 using Autoglass.Infra.Context;
 using Autoglass.Infra.Repository;
 
@@ -14,7 +15,8 @@ namespace AutoglassAPI.Services
             services.AddSwaggerGen();
             services.AddAutoMapper(typeof(AutoMapperProfiles));
 
-            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IAutoglassService, AutoglassService>();
+            services.AddScoped<IAutoglassRepository, AutoglassRepository>();
             services.AddScoped<IAutoglassContext>(provider => provider.GetService<AutoglassContext>());
 
             return services;
