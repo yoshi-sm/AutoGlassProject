@@ -1,12 +1,4 @@
-﻿using Autoglass.Aplicacao.Dto;
-using Autoglass.Aplicacao.RespostaController;
-using Autoglass.Dominio.Entidades;
-using Azure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autoglass.Dominio.Entidades;
 
 namespace Autoglass.Aplicacao.Interfaces
 {
