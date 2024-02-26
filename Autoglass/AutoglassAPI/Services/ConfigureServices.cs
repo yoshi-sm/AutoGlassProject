@@ -3,6 +3,7 @@ using Autoglass.Aplicacao.Mapping;
 using Autoglass.Aplicacao.Services;
 using Autoglass.Infra.Context;
 using Autoglass.Infra.Repository;
+using Microsoft.OpenApi.Models;
 
 namespace AutoglassAPI.Services
 {
@@ -18,6 +19,14 @@ namespace AutoglassAPI.Services
             services.AddScoped<IAutoglassService, AutoglassService>();
             services.AddScoped<IAutoglassRepository, AutoglassRepository>();
             services.AddScoped<IAutoglassContext>(provider => provider.GetService<AutoglassContext>());
+
+            //configuracao de dateonly do swagger
+            services.AddSwaggerGen( c =>
+                c.MapType<DateOnly>(() => new OpenApiSchema
+                {
+                    Type = "string",
+                    Format = "date"
+                }));
 
             return services;
         }

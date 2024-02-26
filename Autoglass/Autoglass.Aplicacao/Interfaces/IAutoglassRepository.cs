@@ -8,7 +8,7 @@ namespace Autoglass.Aplicacao.Interfaces
         public Task<Produto?> RetornarProdutoPorId(int id);
         public Task<Produto> AdicionarProduto(Produto produto);
         public Task<Fornecedor?> RetornarFornecedorPorId(int id);
-        public void SalvarAlteracoes();
+        public Task SalvarAlteracoes();
     }
 
 

@@ -32,7 +32,7 @@ namespace Autoglass.Aplicacao.Services
             if (fornecedor == null)
                 return new RespostaGenerica<Produto>("Código de fornecedor inserido é inválido.");
             await _repository.AdicionarProduto(produto);
-            _repository.SalvarAlteracoes();
+            await _repository.SalvarAlteracoes();
             return new RespostaGenerica<Produto>(produto);
         }
 

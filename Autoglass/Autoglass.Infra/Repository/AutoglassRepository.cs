@@ -40,7 +40,7 @@ namespace Autoglass.Infra.Repository
             return retorno;
         }
 
-        public async void SalvarAlteracoes()
+        public async Task SalvarAlteracoes()
         {
             await _context.SaveChangesAsync();
         }

@@ -20,7 +20,7 @@ namespace AutoglassAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("RetornarProdutos")]
         public async Task<IActionResult> RetornarProdutos(
             [FromServices] IAutoglassService service,
             [FromQuery] string? descricao,
@@ -39,8 +39,7 @@ namespace AutoglassAPI.Controllers
             return Ok(_mapper.Map<List<ProdutoDto>>(resposta.Objeto));
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("RetornarProdutos/{id}")]
         public async Task<IActionResult> RetornarProdutoPorId([FromServices] IAutoglassService service, [FromRoute] int id)
         {
             var resposta = await service.RetornarProdutoPorId(id);
@@ -49,7 +48,7 @@ namespace AutoglassAPI.Controllers
             return Ok(_mapper.Map<ProdutoDto>(resposta.Objeto));
         }
 
-        [HttpPost]
+        [HttpPost("InserirProduto")]
         public async Task<IActionResult> CriarProduto([FromServices] IAutoglassService service, [FromBody] CriarProdutoDto dto)
         {
             var resposta = await service.InserirProduto(_mapper.Map<Produto>(dto));
@@ -58,8 +57,7 @@ namespace AutoglassAPI.Controllers
             return Ok(_mapper.Map<ProdutoDto>(resposta.Objeto));
         }
 
-        [HttpPut]
-        [Route("{id}")]
+        [HttpPut("AlterarProduto/{id}")]
         public async Task<IActionResult> EditarProduto([FromServices] IAutoglassService service, 
             [FromRoute] int id, [FromBody] EditarProdutoDto dto)
         {
@@ -69,14 +67,13 @@ namespace AutoglassAPI.Controllers
             return Ok(_mapper.Map<ProdutoDto>(resposta.Objeto));
         }
 
-        [HttpPut]
-        [Route("remover/{id}")]
+        [HttpPut("remover/{id}")]
         public async Task<IActionResult> ExcluirProduto([FromServices] IAutoglassService service, [FromRoute] int id)
         {
             var resposta = await service.ExcluirProduto(id);
             if (resposta.Objeto == null)
                 return NotFound();
-            return Ok(resposta.Objeto);
+            return Ok(_mapper.Map<ProdutoDto>(resposta.Objeto));
         }
     }
 }
