@@ -43,7 +43,7 @@ namespace Autoglass.Aplicacao.Services
                 return new RespostaGenerica<Produto>();
 
             produtoRetorno.AlterarProduto(produto);
-            _repository.SalvarAlteracoes();
+            await _repository.SalvarAlteracoes();
 
             return new RespostaGenerica<Produto>(produtoRetorno);
         }
@@ -54,7 +54,7 @@ namespace Autoglass.Aplicacao.Services
             if (produtoRetorno == null)
                 return new RespostaGenerica<Produto>(produtoRetorno);
             produtoRetorno.ExcluirLogicamente();
-            _repository.SalvarAlteracoes();
+            await _repository.SalvarAlteracoes();
             return new RespostaGenerica<Produto>(produtoRetorno);
         }
 
